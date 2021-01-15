@@ -1,0 +1,27 @@
+<?php
+/* Attempt MySQL server connection. Assuming you are running MySQL
+server with default setting (user 'root' with no password) */
+$link = mysqli_connect("localhost", "root", "", "custom");
+
+// Check connection
+if($link === false){
+die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+
+// Attempt insert query execution
+$sql = "INSERT INTO customers (customerid, companyname, contactname,address, city, postalcode, country) VALUES
+('ALFKI ', 'Alfreds Futterkiste ', 'Maria Anders', 'Obere Str. 57 ', ' Berlin ', 'Ber102', 'Germany '),
+('NORTS ', 'North/South', 'Simon Crowther ', ' South House 300 ', 'London', 'SW7 1RZ', 'UK '),
+('WOLZA ', 'Wolski Zajazd', 'Zbyszek Piestrzeniewicz ', 'ul. Filtrowa 68 ', 'Warszawa', 'DKSS22', 'Poland '),
+('JK803 ', 'LPU-CSE', 'LPUGOODCLASS', 'Faculty of Polytechnic ', 'Jalandhar', 'XZSS', 'India'),
+('JKRTC', 'Lovely Univer', 'LPUCLASS', 'Faculty of Polytechnic ', 'Jalandhar', 'SXD21', 'INDIA')
+";
+if(mysqli_query($link, $sql)){
+echo "Records added successfully.";
+} else{
+echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
+
+// Close connection
+mysqli_close($link);
+?>
